@@ -1,0 +1,141 @@
+import random as r
+import time
+
+print("=" * 60)
+print("\t\t🎮 WELCOME TO THE GAME 🎮")
+print("=" * 60)
+
+time.sleep(2)
+
+print("\nThe rules are simple!")
+print("A random player will be selected.")
+print("A random task will then be assigned to that player.")
+print("Let's see who gets selected... 😈")
+
+time.sleep(3)
+
+while True:
+    try:
+        n = int(input("\nEnter the number of players: "))
+
+        if n < 2:
+            print("⚠️ Please enter at least 2 players.")
+        else:
+            break
+
+    except ValueError:
+        print("⚠️ Please enter a valid number.")
+
+
+players = []
+
+for i in range(n):
+    while True:
+        name = input(f"Enter the name of Player {i + 1}: ").strip()
+
+        if name == "":
+            print("⚠️ Name cannot be empty.")
+        elif name in players:
+            print("⚠️ That name has already been entered.")
+        else:
+            players.append(name)
+            break
+
+tasks = [
+    "DANCE FOR 20 SECONDS",
+    "SING A SONG",
+    "JUMP 5 TIMES",
+    "SAY A TONGUE TWISTER",
+    "TELL A JOKE",
+    "MAKE A FUNNY FACE",
+    "ACT LIKE A COW",
+    "IMITATE YOUR FAVOURITE ACTOR",
+    "SPEAK WITHOUT USING THE LETTER 'A' FOR 20 SECONDS",
+    "DO YOUR BEST CELEBRATION DANCE",
+    "DO SOMEONE'S MIMICRY"
+
+]
+
+
+r.shuffle(players)
+r.shuffle(tasks)
+
+
+print("\n" + "=" * 60)
+print("\t\tTHE GAME BEGINS!")
+print("=" * 60)
+
+time.sleep(2)
+
+round_number = 1
+
+while len(players) > 0 and len(tasks) > 0:
+
+    print("\n" + "-" * 60)
+    print(f"\t\tROUND {round_number}")
+    print("-" * 60)
+
+    time.sleep(1)
+
+    # Select player
+    selected_player = players.pop(0)
+
+    # Select task
+    selected_task = tasks.pop(0)
+
+    print("\nSelecting a player...")
+    time.sleep(2)
+
+    print("3...")
+    time.sleep(1)
+
+    print("2...")
+    time.sleep(1)
+
+    print("1...")
+    time.sleep(1)
+
+    print("\n🎯 SELECTED PLAYER:", selected_player)
+
+    time.sleep(2)
+
+    print("\nSelecting the task...")
+    time.sleep(2)
+
+    print("3...")
+    time.sleep(1)
+
+    print("2...")
+    time.sleep(1)
+
+    print("1...")
+    time.sleep(1)
+
+    print("\n🔥 YOUR TASK IS:")
+    print("-" * 40)
+    print(selected_task)
+    print("-" * 40)
+
+    round_number += 1
+
+    # Check if more rounds are possible
+    if len(players) == 0:
+        print("\n🎉 Everyone has been selected!")
+        break
+
+    if len(tasks) == 0:
+        print("\n⚠️ We have run out of tasks!")
+        break
+
+    choice = input("\nPress ENTER for the next round or type 'q' to quit: ")
+
+    if choice.lower() == "q":
+        print("\nThanks for playing! 👋")
+        break
+
+
+print("\n" + "=" * 60)
+print("\t\tGAME OVER 🎉")
+print("=" * 60)
+
+print("\nThanks for playing!")
